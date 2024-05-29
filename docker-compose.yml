@@ -1,0 +1,23 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest  # or any other SQL database image you want to use
+    restart: always
+    environment:
+      POSTGRES_USER: <your_username>
+      POSTGRES_PASSWORD: <your_password>
+      POSTGRES_DB: <your_database_name>
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
