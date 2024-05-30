@@ -6,11 +6,11 @@ router = APIRouter()
 
 #login
 @router.post("/signin")
-def sign_in():
-    pass
+async def sign_in():
+    return {}
 
 
 #signup
 @router.post("/signup")
-def sign_up():
-    pass
+async def sign_up():
+    return {}

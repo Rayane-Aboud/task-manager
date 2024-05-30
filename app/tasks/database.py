@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker
 # Update the PostgreSQL connection details
 POSTGRES_USER = "admin"
 POSTGRES_PASSWORD = "password"
-POSTGRES_DB = "projects"
+POSTGRES_DB = "tasks"
 POSTGRES_HOST = "localhost"  # Assuming the database is running locally
 POSTGRES_PORT = "5432"
 

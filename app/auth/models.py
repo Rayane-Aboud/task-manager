@@ -12,3 +12,4 @@ class User(Base):
     is_active = Column(Boolean, default=True)
     projects = relationship("Project", back_populates="owner")
 
+

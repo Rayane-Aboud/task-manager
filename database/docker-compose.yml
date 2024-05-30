@@ -1,0 +1,16 @@
+version: '3'
+services:
+  db:
+      image: postgres:latest  # or any other SQL database image you want to use
+      restart: always
+      environment:
+        POSTGRES_USER: admin
+        POSTGRES_PASSWORD: password
+        POSTGRES_DB: users,projects,tasks
+      ports:
+        - "5432:5432"
+      volumes:
+        - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

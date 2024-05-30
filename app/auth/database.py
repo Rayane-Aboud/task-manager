@@ -2,16 +2,23 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-#using sqllite (file called sql_app.db)
-SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
+# Update the PostgreSQL connection details
+POSTGRES_USER = "admin"
+POSTGRES_PASSWORD = "password"
+POSTGRES_DB = "users"
+POSTGRES_HOST = "localhost"  # Assuming the database is running locally
+POSTGRES_PORT = "5432"
 
-# engine is the database connection
+# Define the PostgreSQL connection URL
+SQLALCHEMY_DATABASE_URL = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
+
+# Create the engine
 engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
+    SQLALCHEMY_DATABASE_URL
 )
 
-#factory for creating new SQLAlchemy sessions
-SessionLocal = sessionmaker(autocommit=False, autoflush=False,bind=engine)
+# Create a session factory
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-# SQLAlchemy's ORM  system uses this base class to define ORM models
+# Base class for declarative models
 Base = declarative_base()
